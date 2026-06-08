@@ -1,0 +1,742 @@
+ /* Base styles */
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     background-color: #F5F5F2;
+     background-image: 
+         /* Background image - educational/student theme */
+         url('../img/background.jpg'),
+         /* Sophisticated geometric patterns */
+         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><defs><pattern id="geometric-pattern" width="200" height="200" patternUnits="userSpaceOnUse"><path d="M100,20 L180,60 L180,140 L100,180 L20,140 L20,60 Z" fill="none" stroke="%23FFD700" stroke-width="2" opacity="0.06"/><circle cx="100" cy="100" r="40" fill="none" stroke="%23D4AF37" stroke-width="1.5" opacity="0.05"/><circle cx="100" cy="100" r="20" fill="none" stroke="%23B8860B" stroke-width="1" opacity="0.08"/><rect x="60" y="60" width="80" height="80" fill="none" stroke="%23FFD700" stroke-width="1" opacity="0.04" transform="rotate(45 100 100)"/></pattern><pattern id="floating-elements" width="120" height="120" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="4" fill="%23FFD700" opacity="0.1"/><circle cx="90" cy="90" r="3" fill="%23D4AF37" opacity="0.08"/><circle cx="60" cy="15" r="3.5" fill="%23B8860B" opacity="0.06"/><circle cx="15" cy="75" r="2.5" fill="%23FFD700" opacity="0.09"/><circle cx="105" cy="45" r="2" fill="%23D4AF37" opacity="0.07"/></pattern><pattern id="wave-pattern" width="300" height="100" patternUnits="userSpaceOnUse"><path d="M0,50 Q75,10 150,50 T300,50" stroke="%23FFD700" stroke-width="2" fill="none" opacity="0.03"/><path d="M0,70 Q75,30 150,70 T300,70" stroke="%23D4AF37" stroke-width="1.5" fill="none" opacity="0.04"/></pattern></defs><rect width="800" height="800" fill="url(%23geometric-pattern)"/><rect width="800" height="800" fill="url(%23floating-elements)"/><rect width="800" height="800" fill="url(%23wave-pattern)"/></svg>'),
+         /* Enhanced gradient layers for depth and richness */
+         radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.3) 0%, transparent 45%),
+         radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.25) 0%, transparent 45%),
+         radial-gradient(circle at 50% 25%, rgba(184, 134, 11, 0.2) 0%, transparent 35%),
+         radial-gradient(circle at 25% 75%, rgba(255, 215, 0, 0.15) 0%, transparent 55%),
+         radial-gradient(circle at 75% 25%, rgba(212, 175, 55, 0.12) 0%, transparent 40%),
+         linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 248, 248, 0.85) 30%, rgba(255, 255, 255, 0.9) 70%, rgba(248, 248, 248, 0.85) 100%);
+     background-size: cover, cover, cover, cover, cover, cover, cover;
+     background-position: center, center, center, center, center, center, center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     transition: all 0.3s ease;
+     position: relative;
+     animation: backgroundShift 20s ease-in-out infinite;
+ }
+
+ /* Add overlay for better readability in light mode */
+ body::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.75) 100%);
+     z-index: 0;
+     pointer-events: none;
+ }
+
+ body.dark-mode {
+     background-color: #0F0F0F;
+     background-image: 
+         /* Background image - same image for dark mode */
+         url('../img/background.jpg');
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     color: #FFFFFF;
+     animation: none;
+ }
+
+ /* Dark mode overlay - darker for better contrast */
+ body.dark-mode::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(20, 20, 20, 0.92) 100%);
+     z-index: 0;
+     pointer-events: none;
+     display: block;
+ }
+
+ /* Login container */
+ .login-container {
+     width: 100%;
+     max-width: 420px;
+     padding: 20px;
+     position: relative;
+     z-index: 1;
+ }
+
+ /* Login card */
+ .login-card {
+     background-color: rgba(250, 250, 248, 0.98);
+     border-radius: 20px;
+     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+     padding: 25px 30px;
+     position: relative;
+     overflow: hidden;
+     transition: all 0.3s ease;
+     backdrop-filter: blur(20px);
+     border: 2px solid rgba(212, 175, 55, 0.25);
+ }
+
+ .login-card:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(212, 175, 55, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.7);
+     border-color: rgba(212, 175, 55, 0.35);
+ }
+
+ .dark-mode .login-card {
+     background-color: #1A1A1A;
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+     backdrop-filter: none;
+     border: 1px solid rgba(255, 255, 255, 0.1);
+ }
+
+ .gold-border {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 4px;
+     background: linear-gradient(90deg, #D4AF37, #B8860B, #FFDF6B);
+ }
+
+ /* Theme toggle */
+ .theme-toggle {
+     position: absolute;
+     top: 15px;
+     right: 15px;
+     cursor: pointer;
+     color: #D4AF37;
+     font-size: 1.2rem;
+     transition: transform 0.2s;
+ }
+
+ .theme-toggle:hover {
+     transform: scale(1.1);
+ }
+
+ /* Login header */
+ .login-header {
+     text-align: center;
+     margin-bottom: 20px;
+ }
+
+ .logo {
+     margin-bottom: 10px;
+ }
+
+ .logo img {
+     border-radius: 50%;
+ }
+
+ .login-header h2 {
+     margin: 10px 0 5px;
+     color: #1A1A1A;
+     font-size: 1.15rem;
+ }
+
+ .dark-mode .login-header h2 {
+     color: #FFFFFF;
+ }
+
+ .login-header p {
+     margin: 0;
+     color: #666666;
+     font-size: 0.75rem;
+ }
+
+ .dark-mode .login-header p {
+     color: #CCCCCC;
+ }
+
+ /* Form styles */
+ .login-form {
+     margin-top: 20px;
+ }
+
+ .form-group {
+     margin-bottom: 15px;
+ }
+
+ .form-group label {
+     display: block;
+     margin-bottom: 8px;
+     font-weight: 500;
+     color: #1A1A1A;
+     font-size: 0.75rem;
+ }
+
+ .dark-mode .form-group label {
+     color: #EEEEEE;
+ }
+
+ .form-group input {
+     width: 100%;
+     padding: 10px 12px;
+     border: 1px solid #D8D8D5;
+     border-radius: 6px;
+     font-size: 0.75rem;
+     transition: border-color 0.3s, box-shadow 0.3s;
+     background-color: #FFFFFF;
+     color: #1A1A1A;
+     box-sizing: border-box;
+ }
+
+ .dark-mode .form-group input {
+     background-color: #2A2A2A;
+     border-color: #2A2A2A;
+     color: #FFFFFF;
+ }
+
+ .form-group input:focus {
+     outline: none;
+     border-color: #D4AF37;
+     box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+ }
+
+ .input-error {
+     border-color: #E74C3C !important;
+ }
+
+ .error-message {
+     color: #E74C3C;
+     font-size: 0.7rem;
+     margin-top: 5px;
+     display: block;
+ }
+
+ /* Password input */
+ .password-input-wrapper {
+     position: relative;
+ }
+
+ .toggle-password {
+     position: absolute;
+     right: 10px;
+     top: 50%;
+     transform: translateY(-50%);
+     background: none;
+     border: none;
+     color: #666666;
+     cursor: pointer;
+     padding: 5px;
+ }
+
+ .dark-mode .toggle-password {
+     color: #CCCCCC;
+ }
+
+ /* Form options */
+ .form-options {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 20px;
+     font-size: 0.7rem;
+ }
+
+ .remember-me {
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+     color: #1A1A1A;
+ }
+
+ .dark-mode .remember-me {
+     color: #EEEEEE;
+ }
+
+ .remember-me input {
+     position: absolute;
+     opacity: 0;
+     cursor: pointer;
+     height: 0;
+     width: 0;
+ }
+
+ .checkmark {
+     display: inline-block;
+     width: 16px;
+     height: 16px;
+     background-color: #FFFFFF;
+     border: 1px solid #D8D8D5;
+     border-radius: 3px;
+     margin-right: 8px;
+     position: relative;
+ }
+
+ .dark-mode .checkmark {
+     background-color: #2A2A2A;
+     border-color: #2A2A2A;
+ }
+
+ .remember-me input:checked~.checkmark {
+     background-color: #D4AF37;
+     border-color: #D4AF37;
+ }
+
+ .checkmark:after {
+     content: "";
+     position: absolute;
+     display: none;
+ }
+
+ .remember-me input:checked~.checkmark:after {
+     display: block;
+ }
+
+ .remember-me .checkmark:after {
+     left: 5px;
+     top: 2px;
+     width: 4px;
+     height: 8px;
+     border: solid white;
+     border-width: 0 2px 2px 0;
+     transform: rotate(45deg);
+ }
+
+ .forgot-password {
+     color: #D4AF37;
+     text-decoration: none;
+     font-weight: 500;
+     transition: color 0.2s;
+ }
+
+ .forgot-password:hover {
+     color: #B8860B;
+     text-decoration: underline;
+ }
+
+ /* Login button */
+ .login-button {
+     width: 100%;
+     padding: 10px;
+     background-color: #D4AF37;
+     color: #FFFFFF;
+     border: none;
+     border-radius: 6px;
+     font-size: 0.8rem;
+     font-weight: 600;
+     cursor: pointer;
+     transition: background-color 0.3s;
+     margin-bottom: 15px;
+ }
+
+ .login-button:hover {
+     background-color: #B8860B;
+ }
+
+ .login-button:disabled {
+     background-color: #CCCCCC;
+     cursor: not-allowed;
+ }
+
+ .loading-spinner {
+     display: inline-block;
+     width: 20px;
+     height: 20px;
+     border: 3px solid rgba(255, 255, 255, 0.3);
+     border-radius: 50%;
+     border-top-color: #FFFFFF;
+     animation: spin 1s ease-in-out infinite;
+ }
+
+ @keyframes spin {
+     to {
+         transform: rotate(360deg);
+     }
+ }
+
+ /* Login footer */
+ .login-footer {
+     text-align: center;
+     margin-top: 15px;
+     font-size: 0.7rem;
+     color: #666666;
+ }
+
+ .dark-mode .login-footer {
+     color: #CCCCCC;
+ }
+
+/* Role selector styles */
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+.dark-mode .form-group select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Error toast styles */
+.error-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ff4444;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 280px;
+    font-size: 0.8rem;
+    animation: slideInRight 0.3s ease;
+}
+
+.error-toast i {
+    font-size: 1rem;
+}
+
+.error-toast button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    margin-left: auto;
+}
+
+.error-toast button:hover {
+    opacity: 0.8;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Background animation for light mode */
+@keyframes backgroundShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+
+
+/* 🔹 Toast Notification Styles */
+        .toast {
+              position: fixed;
+              top: -60px;
+              right: 20px;
+              background: #222;
+              color: white;
+              padding: 10px 15px;
+              border-radius: 8px;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              opacity: 0;
+              transform: translateY(-10px);
+              transition: all 0.4s ease;
+              z-index: 9999;
+              font-size: 0.75rem;
+          }
+
+        .toast.show {
+            top: 20px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #E53935, #B71C1C);
+        }
+
+        /* 🔹 Spinner on Login Button */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .login-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .login-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* 🔹 PWA Install Button */
+        .pwa-install-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .pwa-install-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #B8860B, #D4AF37);
+        }
+
+        .pwa-install-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .dark-mode .pwa-install-btn {
+            background: linear-gradient(135deg, #D4AF37, #B8860B);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Modernized Toast Notifications (Synced with Dashboard) */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.toast-notification {
+    pointer-events: auto;
+    min-width: 320px;
+    max-width: 420px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transform: translateX(120%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+.toast-notification::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: #D4AF37;
+}
+
+.toast-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.toast-content {
+    flex: 1;
+}
+
+.toast-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1A1A1A;
+    margin-bottom: 2px;
+}
+
+.toast-message {
+    display: block;
+    font-size: 0.8rem;
+    color: #666666;
+    line-height: 1.4;
+}
+
+.toast-close {
+    cursor: pointer;
+    color: #666666;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    padding: 4px;
+}
+
+.toast-close:hover {
+    opacity: 1;
+}
+
+/* Toast Variants */
+.toast-success::before { background: #27ae60; }
+.toast-success .toast-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+
+.toast-error::before { background: #e74c3c; }
+.toast-error .toast-icon { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+
+.toast-warning::before { background: #f39c12; }
+.toast-warning .toast-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+
+.toast-info::before { background: #D4AF37; }
+.toast-info .toast-icon { background: rgba(212, 175, 55, 0.1); color: #D4AF37; }
+
+/* Progress Bar */
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.toast-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    transform-origin: left;
+}
+
+.dark-mode .toast-notification {
+    background: #1A1A1A;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .toast-title { color: #FFFFFF; }
+.dark-mode .toast-progress { background: rgba(255, 255, 255, 0.05); }
+
+/* Responsive Design */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 15px;
+            }
+
+            .login-card {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .login-header h2 {
+                font-size: 1.25rem;
+            }
+
+            .form-group label {
+                font-size: 0.8rem;
+            }
+
+            .form-group input {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+
+            .login-button {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .pwa-install-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-height: 600px) {
+            body {
+                align-items: flex-start;
+                padding: 20px 0;
+            }
+        }

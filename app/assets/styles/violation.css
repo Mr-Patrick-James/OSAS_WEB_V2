@@ -1,0 +1,5566 @@
+/* Violation.css - UPDATED WITH PROPER DARK MODE & IMPROVED MODAL */
+
+/* Add this border variable at the top */
+:root {
+  --border: #DDDDDD;
+}
+
+body.dark {
+  --border: #2A2A2A;
+}
+
+/* ========================================= */
+/*            TABS SECTION                  */
+/* ========================================= */
+
+.Violations-tabs {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.Violations-tab-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: var(--dark-grey);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.Violations-tab-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--dark);
+}
+
+.Violations-tab-btn.active {
+  background: var(--gold);
+  color: #333;
+}
+
+.Violations-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+/* Management Modal Toggle Button */
+.vt-toggle-view-btn {
+  background: #f8f9fa;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.vt-toggle-view-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+  transform: rotate(90deg);
+}
+
+.vt-toggle-view-btn i {
+  font-size: 16px;
+}
+
+/* ========================================= */
+/*         BASE STYLES FOR PAGE             */
+/* ========================================= */
+
+#Violations-page {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 12px 10px !important;
+  margin: 0 !important;
+  min-height: calc(100vh - 56px);
+  font-family: var(--poppins);
+  background: var(--grey);
+  color: var(--dark);
+  box-sizing: border-box;
+}
+
+/* ========================================= */
+/*            POLISHED HEADER SECTION        */
+/* ========================================= */
+
+.Violations-head-title {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.Violations-left {
+  flex: 1;
+}
+
+.Violations-head-title h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: var(--dark);
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-grey) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Violations-subtitle {
+  font-size: 0.8rem;
+  color: var(--dark-grey);
+  margin: 0 0 12px 0;
+}
+
+.Violations-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--dark-grey);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Violations-breadcrumb a {
+  color: var(--dark-grey);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Violations-breadcrumb a:hover {
+  color: var(--gold);
+}
+
+.Violations-breadcrumb .active {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.Violations-breadcrumb i {
+  font-size: 12px;
+  color: var(--dark-grey);
+}
+
+/* ========================================= */
+/*          HEADER ACTION BUTTONS           */
+/* ========================================= */
+
+.Violations-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.Violations-button-group {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: var(--light);
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.Violations-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1.5px solid transparent;
+  font-family: var(--poppins);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+#btnExportViolations {
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+}
+
+#btnExportViolations:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+#btnRefreshViolations,
+#refreshViolationsBtn {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#btnRefreshViolations:hover,
+#refreshViolationsBtn:hover {
+  background: #2563eb !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.Violations-btn.primary {
+  background: #ffb347;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+}
+
+.Violations-btn.primary:hover {
+  background: #ffa500;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 165, 0, 0.4);
+}
+
+.Violations-btn i {
+  font-size: 14px;
+  transition: transform 0.25s ease;
+  color: currentColor;
+}
+
+.Violations-btn.primary i {
+  font-size: 15px;
+}
+
+.Violations-btn.outline.small i {
+  font-size: 13px;
+}
+
+.Violations-btn.outline:hover {
+  background: var(--light);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+}
+
+#btnArchivedViolations {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#btnArchivedViolations:hover {
+  background: #d97706 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+#btnArchivedViolations.active {
+  background: #64748b !important;
+}
+
+#btnMonthlyReset {
+  background: var(--red, #DB504A) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#btnMonthlyReset:hover {
+  background: #b71c1c !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+#btnExportViolations {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#btnExportViolations:hover {
+  background: #059669 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.Violations-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.35);
+  background: linear-gradient(135deg, #FFCC00 0%, #FF9900 100%);
+}
+
+.Violations-btn:hover i {
+  transform: scale(1.1);
+}
+
+.Violations-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+.Violations-btn.primary:active {
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.25);
+  background: linear-gradient(135deg, #E6B800 0%, #E68A00 100%);
+}
+
+.Violations-btn.outline:active {
+  background: var(--grey);
+}
+
+.Violations-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.vt-manage-item.archived {
+  opacity: 0.7;
+  background-color: #f3f4f6;
+  border-left: 3px solid #9ca3af;
+}
+
+.vt-manage-item.archived .vt-manage-item-name {
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+.vt-manage-item-restore {
+  background: none;
+  border: none;
+  color: #10b981;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.vt-manage-item-restore:hover {
+  background-color: #dcfce7;
+  color: #059669;
+}
+
+.Violations-stats-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.Violations-stat-card {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--gold);
+}
+
+.Violations-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+}
+
+.Violations-stat-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold), #ffcc33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+
+.Violations-stat-content {
+  flex: 1;
+}
+
+.Violations-stat-title {
+  font-size: 0.68rem;
+  color: var(--dark-grey);
+  margin: 0 0 2px 0;
+  font-weight: 500;
+}
+
+.Violations-stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 4px 0;
+}
+
+.Violations-stat-change,
+.Violations-stat-percentage {
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.Violations-stat-change.positive {
+  color: #2e7d32;
+}
+
+.Violations-stat-change.negative {
+  color: var(--red);
+}
+
+.Violations-stat-percentage {
+  color: var(--dark-grey);
+}
+
+/* ========================================= */
+/*           MAIN CONTENT CARD              */
+/* ========================================= */
+
+.Violations-content-card {
+  background: var(--light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+/* Table Header */
+.Violations-table-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Violations-header-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.Violations-table-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 4px 0;
+}
+
+.Violations-table-subtitle {
+  font-size: 0.75rem;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+.Violations-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.Violations-search-box {
+  position: relative;
+  min-width: 160px;
+  flex: 1;
+  max-width: 240px;
+}
+
+.Violations-search-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-grey);
+  font-size: 14px;
+}
+
+.Violations-search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--light);
+  color: var(--dark);
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.Violations-search-box input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
+  background: var(--light);
+}
+
+.Violations-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.Violations-date-filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--light);
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.Violations-date-filter span {
+  font-size: 11px;
+  color: var(--dark-grey);
+  font-weight: 500;
+}
+
+.Violations-filter-date {
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: var(--dark);
+  font-family: var(--poppins);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.Violations-filter-date:focus {
+  color: var(--gold);
+}
+
+.Violations-filter-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--light);
+  color: var(--dark);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.Violations-filter-select:focus {
+  border-color: var(--gold);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
+  background: var(--light);
+}
+
+.Violations-filter-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--light);
+  color: var(--dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.Violations-filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+/* ========================================= */
+/*                TABLE STYLES              */
+/* ========================================= */
+
+.Violations-table-container {
+  overflow-x: auto;
+  padding: 0 20px;
+  border-radius: 8px;
+  background: var(--light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--grey);
+}
+
+.Violations-table-container::-webkit-scrollbar {
+  height: 12px;
+}
+
+.Violations-table-container::-webkit-scrollbar-track {
+  background: var(--grey);
+  border-radius: 6px;
+}
+
+.Violations-table-container::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 6px;
+  border: 2px solid var(--grey);
+}
+
+.Violations-table-container::-webkit-scrollbar-thumb:hover {
+  background: #ffcc33;
+}
+
+.Violations-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+  table-layout: fixed;
+}
+
+.Violations-table thead {
+  border-bottom: 3px solid var(--border);
+  background: rgba(255, 215, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.Violations-table th {
+  padding: 8px 6px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--dark);
+  white-space: nowrap;
+  border-bottom: 2px solid var(--border);
+  background: var(--light);
+}
+
+.Violations-table th.Violations-sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.Violations-table-header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Violations-table tbody tr {
+  border-bottom: 1.5px solid var(--border);
+  transition: all 0.3s ease;
+  background: var(--light);
+}
+
+.Violations-table tbody tr:hover {
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transform: translateX(2px);
+}
+
+.Violations-table tbody tr:nth-child(even) {
+  background: rgba(255, 215, 0, 0.02);
+}
+
+.Violations-table td {
+  padding: 8px 6px;
+  color: var(--dark);
+  font-size: 10px;
+  vertical-align: middle;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Violations-table td:last-child {
+  border-right: none;
+  width: 120px; /* Fixed width for actions column */
+  min-width: 120px;
+}
+
+/* Column-specific widths */
+.Violations-table th:nth-child(1), /* Case ID */
+.Violations-table td:nth-child(1) {
+  width: 120px;
+  min-width: 120px;
+}
+
+.Violations-table th:nth-child(2), /* Student */
+.Violations-table td:nth-child(2) {
+  width: 180px;
+  min-width: 160px;
+}
+
+.Violations-table th:nth-child(3), /* Student ID */
+.Violations-table td:nth-child(3) {
+  width: 110px;
+  min-width: 110px;
+}
+
+.Violations-table th:nth-child(4), /* Violation Type */
+.Violations-table td:nth-child(4) {
+  width: 140px;
+  min-width: 140px;
+}
+
+.Violations-table th:nth-child(5), /* Level */
+.Violations-table td:nth-child(5) {
+  width: 100px;
+  min-width: 100px;
+}
+
+.Violations-table th:nth-child(6), /* Department */
+.Violations-table td:nth-child(6) {
+  width: 90px;
+  min-width: 90px;
+}
+
+.Violations-table th:nth-child(7), /* Section */
+.Violations-table td:nth-child(7) {
+  width: 80px;
+  min-width: 80px;
+}
+
+.Violations-table th:nth-child(8), /* Year Level */
+.Violations-table td:nth-child(8) {
+  width: 90px;
+  min-width: 90px;
+}
+
+.Violations-table th:nth-child(9), /* Date Reported */
+.Violations-table td:nth-child(9) {
+  width: 130px;
+  min-width: 130px;
+}
+
+.Violations-table th:nth-child(10), /* Status */
+.Violations-table td:nth-child(10) {
+  width: 110px;
+  min-width: 110px;
+}
+
+.Violations-table th:nth-child(11), /* Actions */
+.Violations-table td:nth-child(11) {
+  width: 120px;
+  min-width: 120px;
+  position: sticky;
+  right: 0;
+  background: var(--light);
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Case ID */
+.violation-case-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Student Info Cell */
+.violation-student-cell {
+  width: 180px;
+}
+
+.violation-student-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.violation-student-image {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+  background: var(--grey);
+}
+
+.student-avatar {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+  background: var(--grey);
+}
+
+.violation-student-name {
+  flex: 1;
+  min-width: 0; /* Allow text truncation */
+}
+
+.violation-student-name strong {
+  display: block;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.violation-student-name small {
+  display: block;
+  color: var(--dark-grey);
+  font-size: 10px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Student ID */
+.violation-student-id {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Violation Type Badges */
+.violation-type-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  display: inline-block;
+  background: var(--surface-2, #f0f0f0);
+  color: var(--text-2, #555);
+  border: 1.5px solid var(--border, #e0e0e0);
+  box-shadow: none;
+}
+
+.violation-type-badge.uniform,
+.violation-type-badge.id,
+.violation-type-badge.footwear,
+.violation-type-badge.behavior {
+  background: var(--surface-2, #f0f0f0);
+  color: var(--text-2, #555);
+  border-color: var(--border, #e0e0e0);
+}
+
+/* Violation Level Badges */
+.violation-level-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 8.5px;
+  font-weight: 700;
+  display: inline-block;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.violation-level-badge.permitted {
+  background: rgba(76, 175, 80, 0.2);
+  color: #1b5e20;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.violation-level-badge.warning {
+  background: rgba(255, 152, 0, 0.2);
+  color: #e65100;
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.violation-level-badge.disciplinary {
+  background: rgba(244, 67, 54, 0.2);
+  color: #b71c1c;
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+/* Department Badges */
+.dept-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 8.5px;
+  font-weight: 700;
+  display: inline-block;
+  letter-spacing: 0.3px;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.dept-badge.bsis {
+  background: rgba(76, 175, 80, 0.2);
+  color: #1b5e20;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.dept-badge.wft {
+  background: rgba(33, 150, 243, 0.2);
+  color: #0d47a1;
+  border-color: rgba(33, 150, 243, 0.3);
+}
+
+.dept-badge.btvted {
+  background: rgba(255, 152, 0, 0.2);
+  color: #e65100;
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.dept-badge.chs {
+  background: rgba(156, 39, 176, 0.2);
+  color: #4a148c;
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+/* Section */
+.violation-section {
+  font-weight: 500;
+}
+
+/* Violation Date */
+.violation-date {
+  color: var(--dark-grey);
+  font-size: 11px;
+}
+
+/* Status Badges */
+.Violations-status-badge {
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 8.5px;
+  font-weight: 700;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Violations-status-badge.permitted {
+  background: rgba(76, 175, 80, 0.25);
+  color: #1b5e20;
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.Violations-status-badge.warning {
+  background: rgba(255, 152, 0, 0.25);
+  color: #e65100;
+  border-color: rgba(255, 152, 0, 0.4);
+}
+
+.Violations-status-badge.disciplinary {
+  background: rgba(244, 67, 54, 0.25);
+  color: #b71c1c;
+  border-color: rgba(244, 67, 54, 0.4);
+}
+
+.Violations-status-badge.resolved {
+  background: rgba(33, 150, 243, 0.25);
+  color: #0d47a1;
+  border-color: rgba(33, 150, 243, 0.4);
+}
+
+/* ========================================= */
+/*            ACTION BUTTONS                */
+/* ========================================= */
+
+.Violations-action-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Violations-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  color: var(--dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.Violations-action-btn i {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Violations-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-color: var(--gold);
+}
+
+/* Action Buttons Layout */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.Violations-action-btn.view {
+  background: white;
+  color: #666;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.Violations-action-btn.view i {
+  font-size: 18px;
+  margin: 0;
+}
+
+.Violations-action-btn.view:hover {
+  background: var(--gold-gradient);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.Violations-action-btn.edit {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.Violations-action-btn.edit:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.Violations-action-btn.resolve {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.Violations-action-btn.resolve:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.Violations-action-btn.escalate {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.Violations-action-btn.escalate:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.Violations-action-btn.delete {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.Violations-action-btn.delete:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+.Violations-action-btn.reopen {
+  background: #64748b;
+  color: #ffffff;
+}
+
+.Violations-action-btn.reopen:hover {
+  background: #475569;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(100, 116, 139, 0.3);
+}
+
+.Violations-action-btn.entrance {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.Violations-action-btn.entrance:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.Violations-action-btn.print {
+  background: #64748b;
+  color: #ffffff;
+}
+
+.Violations-action-btn.print:hover {
+  background: #475569;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(100, 116, 139, 0.3);
+}
+
+/* Add tooltips for action buttons */
+.Violations-action-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.Violations-action-btn:hover::after {
+  opacity: 1;
+}
+
+/* Hide tooltip if no data-tooltip attribute content */
+.Violations-action-btn:not([data-tooltip])::after,
+.Violations-action-btn[data-tooltip=""]::after {
+  display: none;
+}
+
+/* ========================================= */
+/*              TABLE FOOTER                */
+/* ========================================= */
+
+.Violations-table-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.Violations-footer-info {
+  font-size: 11px;
+  color: var(--dark-grey);
+}
+
+.Violations-footer-info span {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.Violations-pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.Violations-pagination-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--light);
+  color: var(--dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  transition: all 0.3s ease;
+}
+
+.Violations-pagination-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.Violations-pagination-btn.active {
+  background: linear-gradient(135deg, var(--gold), #ffcc33);
+  color: var(--dark);
+  border-color: transparent;
+}
+
+.Violations-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================= */
+/*           MODAL STYLES - UPDATED         */
+/* ========================================= */
+
+.Violations-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+
+.Violations-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Violations-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.Violations-modal-container {
+  position: relative;
+  background: var(--light);
+  width: 95%;
+  max-width: 1050px; /* Increased from 500px to stretch the view */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.4s ease-out;
+  z-index: 2001;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 20px auto;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.Violations-modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(255,215,0,.12) 0%, transparent 100%);
+  box-shadow: none;
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.Violations-modal-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--poppins);
+  line-height: 1.3;
+  flex: 1;
+  padding-right: 40px; /* Space for close button */
+}
+
+#ViolationDetailsModal .Violations-modal-header h2 {
+  font-size: 0.9rem;
+}
+
+.Violations-modal-header h2 i {
+  font-size: 20px;
+}
+
+.form-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 215, 0, 0.1);
+  overflow: hidden;
+  border-radius: 0 0 2px 2px;
+}
+
+.form-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), #ffcc33);
+  animation: progressFill 0.5s ease-out forwards;
+}
+
+@keyframes progressFill {
+  to {
+    width: 100%;
+  }
+}
+
+.Violations-close-btn {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #f5f5f5;
+  color: #888;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.Violations-close-btn:hover {
+  background: #ffe5e5;
+  color: #ef4444;
+  border-color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* ========================================= */
+/*       RECORD MODAL SPECIFIC STYLES       */
+/* ========================================= */
+
+#ViolationRecordForm {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Student Search Enhancement */
+.student-search-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--grey);
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.student-search-wrapper:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.student-search-wrapper i {
+  margin-left: 8px;
+  color: var(--dark-grey);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.student-search-wrapper input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--dark);
+  font-size: 11px;
+  outline: none;
+}
+
+.student-search-wrapper input::placeholder {
+  color: var(--dark-grey);
+}
+
+.Violations-search-btn,
+.Violations-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--light);
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.Violations-search-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+}
+
+.Violations-refresh-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--light);
+  color: var(--dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.Violations-refresh-btn i {
+  font-size: 18px;
+}
+
+.Violations-refresh-btn:hover {
+  background: var(--grey);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: rotate(180deg);
+}
+
+/* Enhanced Student Info Card */
+.violation-student-info-card {
+  background: var(--grey);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  text-align: left;
+  border: 1.5px solid transparent;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+  min-width: 0;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.violation-student-info-card.selected {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 204, 51, 0.05));
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);
+}
+
+.violation-student-image {
+  width: 44px; /* Reduced from 60px */
+  height: 44px; /* Reduced from 60px */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.violation-student-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.violation-student-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  align-items: flex-start;
+}
+
+.violation-detail-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.violation-detail-label {
+  min-width: 80px;
+  max-width: 90px;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--dark-grey);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.violation-detail-value {
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 11px;
+  flex: 1;
+  text-align: right;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  line-height: 1.4;
+}
+
+/* Enhanced Violation Type Section */
+.violation-type-section,
+.violation-level-section,
+.violation-details-section,
+.violation-attachments {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.violation-type-section h3,
+.violation-level-section h3,
+.violation-details-section h3,
+.violation-attachments h4 {
+  font-size: 1rem;
+  color: var(--dark);
+  margin: 0 0 12px 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.violation-type-section h3::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.violation-level-section h3::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background: #ff6b6b;
+  border-radius: 2px;
+}
+
+.violation-details-section h3::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background: #6f42c1;
+  border-radius: 2px;
+}
+
+.violation-attachments h4::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background: #17a2b8;
+  border-radius: 2px;
+}
+
+.violation-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Force 2 columns to keep it compact */
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.violation-type-card {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.violation-type-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.violation-type-card:hover::before {
+  background: var(--gold);
+}
+
+.violation-type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.violation-type-card label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.violation-type-card i {
+  font-size: 20px;
+  color: var(--dark-grey);
+  transition: all 0.3s ease;
+}
+
+.violation-type-card span {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 11px;
+  transition: all 0.3s ease;
+}
+
+.violation-type-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+}
+
+.violation-type-card:hover i,
+.violation-type-card:hover span {
+  color: var(--gold);
+}
+
+.violation-type-card.active {
+  border-color: var(--gold);
+  background: rgba(255, 215, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.2);
+}
+
+.violation-type-card.active i,
+.violation-type-card.active span {
+  color: var(--gold);
+}
+
+.violation-type-card.active::before {
+  background: var(--gold);
+}
+
+/* Enhanced Violation Level Section */
+.violation-level-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.violation-level-option {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.violation-level-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.violation-level-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.violation-level-option label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding-left: 6px;
+}
+
+.level-title {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--dark);
+  transition: all 0.3s ease;
+}
+
+.level-desc {
+  font-size: 10px;
+  color: var(--dark-grey);
+  line-height: 1.3;
+  transition: all 0.3s ease;
+}
+
+/* Level-specific colors */
+.level-permitted { --level-color: #10b981; }
+.level-warning { --level-color: #f59e0b; }
+.level-disciplinary { --level-color: #ef4444; }
+.level-resolved { --level-color: #3b82f6; }
+
+.level-title {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--level-color);
+  transition: all 0.3s ease;
+}
+
+.violation-level-option:hover {
+  border-color: var(--level-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.violation-level-option.active {
+  border-color: var(--level-color);
+  background: color-mix(in srgb, var(--level-color), transparent 95%);
+}
+
+.violation-level-option.active::before {
+  background: var(--level-color);
+}
+
+/* Manage Levels Color Dots */
+.vt-color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.vt-color-dot:hover {
+  transform: scale(1.2);
+}
+
+.vt-color-dot.active {
+  border-color: #333;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  transform: scale(1.1);
+}
+
+.vt-save-all-btn {
+  background: var(--gold);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vt-save-all-btn:hover {
+  background: #e5c147;
+  transform: translateY(-1px);
+}
+
+/* Recorded & Disabled Level Styles */
+.violation-level-option.recorded {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 2px dashed #adb5bd !important;
+  filter: grayscale(100%); /* Makes it look fully disabled/archived */
+}
+
+.violation-level-option.recorded .level-title,
+.violation-level-option.recorded .level-desc {
+  color: #6c757d !important;
+}
+
+/* We can keep these for structure but grayscale will handle the colors */
+.violation-level-option.recorded.level-permitted {
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.violation-level-option.recorded.level-warning {
+  background-color: rgba(253, 126, 20, 0.1);
+}
+
+.violation-level-option.recorded.level-disciplinary {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.violation-level-option.disabled {
+  pointer-events: none;
+}
+
+.violation-level-option.disabled label {
+  cursor: not-allowed;
+}
+
+/* History Badge */
+.violation-history-badge {
+  font-size: 11px;
+  background: #6c757d;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.violation-history-badge i {
+  font-size: 12px;
+}
+
+/* Enhanced Form Controls */
+.Violations-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.Violations-form-group {
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.Violations-form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 11px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.Violations-form-group label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.Violations-form-group input,
+.Violations-form-group select,
+.Violations-form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+  background: var(--light);
+  color: var(--dark);
+  transition: all 0.3s ease;
+  font-family: var(--lato);
+}
+
+.Violations-form-group input:focus,
+.Violations-form-group select:focus,
+.Violations-form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.15);
+}
+
+.Violations-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   EVIDENCE UPLOAD — Professional Dropzone UI
+   ============================================================ */
+.violation-attachments {
+  padding: 16px !important;
+}
+
+.evidence-upload-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.evidence-upload-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.evidence-upload-title i {
+  font-size: 16px;
+  color: var(--gold);
+}
+
+.evidence-upload-title em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--dark-grey);
+  font-size: 11px;
+}
+
+.evidence-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dark-grey);
+  background: var(--grey);
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+/* Dropzone */
+.evidence-dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: var(--grey);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.evidence-dropzone:hover,
+.evidence-dropzone.dragover {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.04);
+}
+
+.evidence-dropzone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 22px 16px;
+  pointer-events: none;
+}
+
+.evidence-dropzone-inner i {
+  font-size: 32px;
+  color: var(--dark-grey);
+  transition: color 0.2s;
+}
+
+.evidence-dropzone:hover .evidence-dropzone-inner i,
+.evidence-dropzone.dragover .evidence-dropzone-inner i {
+  color: var(--gold);
+}
+
+.evidence-dropzone-inner p {
+  font-size: 13px;
+  color: var(--dark);
+  margin: 0;
+  pointer-events: all;
+}
+
+.evidence-browse-btn {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  pointer-events: all;
+}
+
+.evidence-browse-btn:hover { opacity: 0.8; }
+
+.evidence-dropzone-inner span {
+  font-size: 10px;
+  color: var(--dark-grey);
+}
+
+/* Preview grid */
+.evidence-previews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.evidence-previews-grid:empty { display: none; }
+
+.preview-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--grey);
+  border: 2px solid var(--border);
+  transition: all 0.2s ease;
+  aspect-ratio: 1;
+}
+
+.preview-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.file-icon-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px;
+}
+
+.file-icon-preview i { font-size: 28px; color: var(--gold); }
+.file-icon-preview .file-ext {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dark-grey);
+}
+
+.preview-item .remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(220, 53, 69, 0.9);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+}
+
+.preview-item:hover .remove-btn { opacity: 1; }
+.preview-item .remove-btn:hover { background: #dc3545; transform: scale(1.1); }
+
+.preview-item .file-size {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  font-size: 9px;
+  padding: 2px 4px;
+  text-align: center;
+}
+
+/* ============================================================
+   EVIDENCE DISPLAY — Details Modal
+   ============================================================ */
+.evidence-section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.evidence-section-header h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0;
+}
+
+.evidence-section-header h4 i {
+  color: var(--gold);
+  font-size: 15px;
+}
+
+/* Evidence popup removed — now shown via popup on badge click */
+.evidence-display-grid { display: none; }
+
+/* Evidence badge button in timeline */
+.timeline-evidence-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  vertical-align: middle;
+}
+
+.timeline-evidence-badge:hover {
+  background: #ffc107;
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(255,193,7,0.4);
+}
+
+.timeline-evidence-badge i { font-size: 12px; }
+
+/* ============================================================
+   EVIDENCE POPUP — inline panel in violation history
+   ============================================================ */
+.evidence-popup {
+  margin-top: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--light);
+  border: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  animation: evidenceSlideIn 0.22s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes evidenceSlideIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.evidence-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.04));
+  border-bottom: 1px solid rgba(212,175,55,0.15);
+}
+
+.evidence-popup-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.evidence-popup-title::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.evidence-popup-close {
+  background: none;
+  border: none;
+  color: var(--dark-grey);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  padding: 0;
+  transition: all 0.2s;
+}
+
+.evidence-popup-close:hover {
+  background: rgba(220,53,69,0.1);
+  color: #dc3545;
+}
+
+.evidence-popup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 10px;
+  padding: 14px;
+}
+
+/* Thumbnail cards */
+.evidence-thumb {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  background: var(--grey);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.evidence-thumb:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(212,175,55,0.25);
+}
+
+.evidence-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.evidence-thumb:hover img { transform: scale(1.06); }
+
+.evidence-thumb .evidence-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.22s;
+}
+
+.evidence-thumb:hover .evidence-overlay { background: rgba(0,0,0,0.38); }
+
+.evidence-thumb .evidence-overlay i {
+  color: white;
+  font-size: 24px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.22s;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+.evidence-thumb:hover .evidence-overlay i {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.evidence-file-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  text-decoration: none;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.evidence-file-thumb i { font-size: 30px; color: var(--gold); }
+.evidence-file-thumb span {
+  font-size: 9px;
+  color: var(--dark-grey);
+  text-align: center;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   LIGHTBOX — full-screen image viewer
+   ============================================================ */
+.evidence-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lbFadeIn 0.18s ease;
+}
+
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.evidence-lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.evidence-lightbox-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 92vw;
+  max-height: 92vh;
+}
+
+/* Top bar */
+.evidence-lightbox-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 12px 0;
+}
+
+.evidence-lightbox-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.evidence-lightbox-close {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.evidence-lightbox-close:hover {
+  background: rgba(220,53,69,0.7);
+  border-color: transparent;
+  transform: scale(1.1);
+}
+
+/* Image wrapper with nav */
+.evidence-lightbox-imgwrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.evidence-lightbox-content img {
+  max-width: 78vw;
+  max-height: 76vh;
+  border-radius: 14px;
+  object-fit: contain;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  display: block;
+  animation: lbImgIn 0.2s ease;
+}
+
+@keyframes lbImgIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.evidence-lightbox-prev,
+.evidence-lightbox-next {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+
+.evidence-lightbox-prev:hover,
+.evidence-lightbox-next:hover {
+  background: rgba(212,175,55,0.3);
+  border-color: rgba(212,175,55,0.5);
+  transform: scale(1.08);
+}
+
+/* Caption / counter */
+.evidence-lightbox-caption {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.evidence-lightbox-counter {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.08);
+  padding: 3px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Enhanced Form Actions */
+.Violations-form-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+.Violations-btn-outline,
+.Violations-btn-primary {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  justify-content: center;
+}
+
+.Violations-btn-outline {
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--dark);
+}
+
+.Violations-btn-primary {
+  border: none;
+  background: linear-gradient(135deg, var(--gold), #ffcc33);
+  color: var(--dark);
+  min-width: 160px;
+}
+
+.Violations-btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+}
+
+.Violations-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+}
+
+/* ========================================= */
+/*       RECORD MODAL SPECIFIC STYLES       */
+/* ========================================= */
+
+.violation-details-content {
+  padding: 0 20px 20px;
+}
+
+/* Case Header */
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Modal Font Consistency */
+.Violations-modal *,
+.Violations-modal span,
+.Violations-modal p,
+.Violations-modal div {
+  font-size: 12px;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", var(--poppins);
+}
+
+.Violations-modal-header h2,
+.Violations-modal-header h2 span {
+  font-size: 15px !important;
+}
+
+#ViolationRecordModal .Violations-modal-header h2,
+#ViolationRecordModal .Violations-modal-header h2 span {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+
+#ViolationRecordModal .Violations-modal-header h2 {
+  display: block !important;
+  padding-right: 0 !important;
+  flex: none !important;
+}
+
+#ViolationRecordModal .Violations-modal-header > div:first-child {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+}
+
+#ViolationDetailsModal .Violations-modal-header h2,
+#ViolationDetailsModal .Violations-modal-header h2 span {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+
+#ViolationRecordModal .Violations-modal-header > div:first-child i {
+  font-size: 24px !important;
+}
+
+.violation-notes-section h4,
+.violation-evidence-section h4,
+.violation-history h4 {
+  font-size: 14px !important;
+}
+
+.violation-student-details h3 {
+  font-size: 15px !important;
+}
+
+.case-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 700;
+  color: var(--text) !important;
+  font-size: 13px !important;
+}
+
+.case-status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.case-status-badge.warning {
+  background: rgba(255, 152, 0, 0.15);
+  color: #ef6c00;
+}
+
+.case-status-badge.permitted {
+  background: rgba(76, 175, 80, 0.15);
+  color: #1b5e20;
+}
+
+.case-status-badge.disciplinary {
+  background: rgba(244, 67, 54, 0.15);
+  color: #b71c1c;
+}
+
+.case-status-badge.resolved {
+  background: rgba(33, 150, 243, 0.15);
+  color: #0d47a1;
+}
+
+/* Detailed Student Info */
+.violation-student-info-card.detailed {
+  background: var(--grey);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.violation-student-info-card.detailed .violation-student-image {
+  width: 60px;
+  height: 60px;
+}
+
+.violation-student-info-card.detailed .violation-student-details h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  color: var(--dark);
+  text-align: left;
+}
+
+.student-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.student-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 11px;
+}
+
+.student-section {
+  color: var(--dark-grey);
+  font-size: 10px;
+}
+
+.student-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--dark-grey);
+  font-size: 10px;
+}
+
+.student-contact i {
+  margin-right: 4px;
+}
+
+/* Details Grid */
+.violation-details-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin: 10px 0;
+  background: var(--grey);
+  border-radius: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.violation-details-grid::-webkit-scrollbar { display: none; }
+.violation-details-grid.dragging { cursor: grabbing; }
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 10px 14px;
+  min-width: 130px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+.detail-item:last-child { border-right: none; }
+
+.detail-label {
+  font-weight: 600;
+  color: var(--dark-grey);
+  font-size: 9px; /* Increased from 7.5px */
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.detail-value {
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 11px; /* Increased from 9.5px */
+  word-break: break-all;
+}
+
+.detail-value.badge {
+  padding: 1.5px 6px;
+  font-size: 8.5px;
+  border-radius: 3px;
+  display: inline-block;
+  width: fit-content;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.detail-value.badge.uniform {
+  background: rgba(156, 39, 176, 0.15);
+  color: #4a148c;
+}
+
+.detail-value.badge.warning {
+  background: rgba(255, 152, 0, 0.15);
+  color: #e65100;
+}
+
+.detail-value.badge.permitted {
+  background: rgba(76, 175, 80, 0.15);
+  color: #1b5e20;
+}
+
+.detail-value.badge.disciplinary {
+  background: rgba(244, 67, 54, 0.15);
+  color: #b71c1c;
+}
+
+.detail-value.badge.resolved {
+  background: rgba(33, 150, 243, 0.15);
+  color: #0d47a1;
+}
+
+/* Notes Section */
+.violation-notes-section {
+  margin: 16px 0;
+}
+
+.violation-notes-section h4 {
+  font-size: 0.9rem;
+  color: var(--dark);
+  margin: 0 0 10px 0;
+}
+
+.notes-content {
+  background: var(--grey);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--dark);
+  line-height: 1.5;
+  font-size: 11px;
+}
+
+/* History Timeline */
+.violation-history {
+  margin: 12px 0;
+}
+
+.violation-history h4 {
+  font-size: 0.8rem;
+  color: var(--dark);
+  margin: 0 0 10px 0;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 12px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.timeline-item:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.timeline-item:hover .timeline-content {
+  border-left-color: var(--gold) !important;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -18px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 1px solid var(--light);
+}
+
+.timeline-content {
+  background: var(--grey);
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 2px solid var(--gold);
+}
+
+.timeline-date {
+  display: block;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 1px;
+  font-size: 9px;
+}
+
+.timeline-title {
+  display: block;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 1px;
+  font-size: 9px;
+}
+
+.timeline-desc {
+  display: block;
+  font-size: 8.5px;
+  color: var(--dark-grey);
+}
+
+/* Details Actions */
+.violation-details-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+}
+
+.violation-details-actions .Violations-action-btn {
+  flex: 1;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  gap: 6px;
+}
+
+/* Attachments in Details */
+.attachments-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--grey);
+  border-radius: 8px;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--dark);
+  transition: all 0.2s ease;
+}
+
+.attachment-item i {
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.attachment-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.no-attachments {
+  color: var(--dark-grey);
+  font-size: 9px;
+  font-style: italic;
+  margin: 0;
+}
+
+.violation-evidence-section {
+  margin-top: 12px;
+}
+
+.violation-evidence-section h4 {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+/* ========================================= */
+/*             EMPTY STATE STYLES           */
+/* ========================================= */
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.Violations-empty-state {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.empty-state-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 64px 24px;
+  text-align: center;
+  background: var(--light);
+  border-radius: 16px;
+  margin: 16px auto;
+  border: 1.5px dashed var(--border);
+  transition: border-color 0.2s;
+  max-width: 100%;
+}
+
+.empty-state-inner:hover {
+  border-color: rgba(212,175,55,0.4);
+}
+
+.empty-state-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(212,175,55,0.06);
+  border: 1.5px solid rgba(212,175,55,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: emptyPulse 3s ease-in-out infinite;
+}
+
+@keyframes emptyPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.15); }
+  50%       { box-shadow: 0 0 0 12px rgba(212,175,55,0); }
+}
+
+.empty-state-text h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.empty-state-text p {
+  font-size: 0.85rem;
+  color: var(--dark-grey);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.empty-state-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(212,175,55,0.35);
+}
+
+.empty-state-btn:hover {
+  background: var(--gold-dark, #b8960c);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212,175,55,0.45);
+}
+
+.empty-state-btn i { font-size: 16px; }
+
+/* ========================================= */
+/*         RESPONSIVE DESIGN - UPDATED      */
+/* ========================================= */
+
+@media (max-width: 1024px) {
+  .Violations-modal-container {
+    width: 90%;
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Violations-modal-container {
+    width: 95%;
+    max-width: 95%;
+    margin: 10px auto;
+    max-height: 95vh;
+  }
+
+  .Violations-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .student-search-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-areas: 
+      "input refresh"
+      "search search";
+    padding: 12px;
+    gap: 10px;
+  }
+
+  #studentSearch {
+    grid-area: input;
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .Violations-refresh-btn {
+    grid-area: refresh;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin: 0;
+    position: static; /* Remove absolute positioning */
+  }
+
+  .Violations-search-btn {
+    grid-area: search;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .Violations-refresh-btn i {
+    font-size: 18px;
+  }
+
+  .violation-student-info-card {
+    padding: 14px 12px;
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .violation-student-details {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .violation-detail-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .violation-detail-label {
+    min-width: 72px;
+    max-width: 80px;
+    flex-shrink: 0;
+    font-size: 10px;
+    text-align: left;
+  }
+
+  .violation-detail-value {
+    text-align: right;
+    font-size: 10px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .Violations-form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .Violations-btn-outline,
+  .Violations-btn-primary {
+    width: 100%;
+    height: 48px;
+  }
+
+  /* Detailed Student Info Mobile Fixes */
+  .violation-student-info-card.detailed {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 12px;
+  }
+
+  .violation-student-info-card.detailed .violation-student-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .violation-student-info-card.detailed .violation-student-details h3 {
+    text-align: left;
+    font-size: 13px !important;
+    word-break: break-word;
+  }
+
+  .violation-student-info-card.detailed .student-meta,
+  .violation-student-info-card.detailed .student-contact {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .Violations-modal-header {
+    padding: 16px 20px;
+  }
+
+  .Violations-modal-header h2 {
+    font-size: 1.2rem;
+  }
+
+  #ViolationRecordForm {
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .violation-type-section,
+  .violation-level-section,
+  .violation-details-section,
+  .violation-attachments {
+    padding: 15px;
+  }
+
+  .violation-type-card, 
+  .violation-level-option {
+    padding: 12px;
+  }
+
+  .violation-detail-label {
+    min-width: 80px;
+    font-size: 13px;
+  }
+
+  .violation-detail-value {
+    font-size: 13px;
+  }
+
+  /* Attachment Responsiveness */
+  .attachments-compact-wrapper {
+    flex-wrap: nowrap; /* Keep it as a horizontal slider on mobile */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+}
+
+/* Loading State */
+.Violations-btn-primary.loading {
+  position: relative;
+  color: transparent;
+}
+
+.Violations-btn-primary.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Field Error States */
+.Violations-form-group.error input,
+.Violations-form-group.error select,
+.Violations-form-group.error textarea {
+  border-color: #dc3545;
+}
+
+.Violations-form-group.error label {
+  color: #dc3545;
+}
+
+.violation-type-card.error,
+.violation-level-option.error {
+  border-color: #dc3545;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ========================================= */
+/*         LOADING OVERLAY & NOTIFICATIONS   */
+/* ========================================= */
+
+.violations-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.violations-loading-content {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+}
+
+/* ========================================= */
+/*       RESPONSIVE TABLE (CARD VIEW)        */
+/* ========================================= */
+
+@media screen and (max-width: 768px) {
+  .Violations-stats-overview {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .Violations-stat-card {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .Violations-head-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 15px;
+  }
+
+  .Violations-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .Violations-button-group {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .Violations-btn {
+    flex: 1;
+    min-width: calc(50% - 6px);
+    justify-content: center;
+  }
+
+  #btnAddViolations {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .Violations-header-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .Violations-search-box {
+    width: 100% !important;
+  }
+
+  .Violations-search-box i {
+    font-size: 16px;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .Violations-search-box input {
+    width: 100% !important;
+    height: 42px;
+    font-size: 13px;
+    padding-left: 42px !important;
+  }
+
+  .Violations-filter-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .Violations-date-filter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 5px;
+    box-sizing: border-box !important;
+  }
+
+  .Violations-filter-date {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px 0;
+  }
+
+  .Violations-date-filter span {
+    font-size: 12px;
+    color: var(--dark-grey);
+    margin: 0 5px;
+    flex-shrink: 0;
+    font-weight: 600;
+    text-transform: lowercase;
+  }
+
+  .Violations-filter-select {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    font-size: 13px;
+    padding: 0 12px;
+  }
+
+  .Violations-filter-btn {
+    width: 100%;
+    height: 42px;
+    font-size: 16px;
+  }
+
+  .Violations-table-container {
+    overflow-x: hidden !important;
+    background: transparent;
+    padding: 0 !important;
+    box-shadow: none;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .Violations-table, 
+  .Violations-table thead, 
+  .Violations-table tbody, 
+  .Violations-table th, 
+  .Violations-table td, 
+  .Violations-table tr { 
+    display: block; 
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hide table headers (but keep for accessibility) */
+  .Violations-table thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .Violations-table tbody tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    background: var(--light);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease;
+  }
+
+  .Violations-table tbody tr:hover {
+    transform: translateY(-2px);
+  }
+
+  .Violations-table td { 
+    border: none;
+    position: relative;
+    padding-left: 52% !important; 
+    text-align: right !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid var(--grey);
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 11px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box !important;
+  }
+
+  .Violations-table td:last-child {
+    border-bottom: none;
+    justify-content: center;
+    padding-left: 10px !important;
+    text-align: center !important;
+    margin-top: 10px;
+  }
+
+  .Violations-table td::before { 
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%; 
+    padding-right: 5px; 
+    white-space: normal;
+    line-height: 1.1;
+    text-align: left;
+    font-weight: 700;
+    color: var(--dark-grey);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box !important;
+  }
+  
+  /* Special handling for certain columns */
+  .Violations-table td[data-label="Actions"]::before {
+    display: none;
+  }
+
+  /* Adjust badges in card view */
+  .Violations-badge, .Violations-status-badge {
+    margin: 0;
+  }
+}
+
+.violations-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.violations-loading-content {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  min-width: 250px;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.violations-loading-content i {
+  font-size: 32px;
+  color: var(--gold);
+  animation: spin 1s linear infinite;
+}
+
+.violations-loading-text {
+  font-size: 14px;
+  color: var(--dark);
+  font-weight: 500;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Notification Styles */
+.violations-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--light);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 500px;
+  z-index: 10000;
+  border-left: 4px solid;
+  animation: slideInRight 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.violations-notification.success {
+  border-left-color: #10b981;
+}
+
+.violations-notification.success i {
+  color: #10b981;
+}
+
+.violations-notification.error {
+  border-left-color: #ef4444;
+}
+
+.violations-notification.error i {
+  color: #ef4444;
+}
+
+.violations-notification.warning {
+  border-left-color: #f59e0b;
+}
+
+.violations-notification.warning i {
+  color: #f59e0b;
+}
+
+.violations-notification.info {
+  border-left-color: #3b82f6;
+}
+
+.violations-notification.info i {
+  color: #3b82f6;
+}
+
+.violations-notification i {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.violations-notification span {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+}
+
+.violations-notification-close {
+  background: none;
+  border: none;
+  color: var(--dark-grey);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.violations-notification-close:hover {
+  background: var(--grey);
+  color: var(--dark);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Refresh button animation */
+#refreshViolationsBtn {
+  transition: all 0.3s ease;
+}
+
+#refreshViolationsBtn:hover {
+  transform: rotate(180deg);
+}
+
+#refreshViolationsBtn i {
+  transition: transform 0.3s ease;
+}
+
+/* Enhanced empty state for loading */
+.violations-table-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--dark-grey);
+}
+
+.violations-table-loading i {
+  font-size: 48px;
+  margin-bottom: 16px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ========================================= */
+/*         STUDENT DETAILS PANEL            */
+/* ========================================= */
+
+.student-details-panel {
+  background: var(--light);
+  border-radius: 12px;
+  margin-top: 24px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
+}
+
+.student-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.student-details-header h2 {
+  margin: 0;
+  color: var(--dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.student-details-close {
+  background: none;
+  border: none;
+  color: var(--dark-grey);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.student-details-close:hover {
+  background: var(--grey);
+  color: var(--dark);
+}
+
+/* Student Profile Section */
+.student-profile-section {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.student-profile-card {
+  background: var(--grey);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.student-profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.student-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.student-profile-info h3 {
+  margin: 0 0 8px 0;
+  color: var(--dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.student-profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.student-profile-meta span {
+  font-size: 14px;
+  color: var(--dark-grey);
+}
+
+.student-profile-meta .student-id {
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.student-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.student-stat-card {
+  background: var(--grey);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.student-stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.student-stat-label {
+  font-size: 12px;
+  color: var(--dark-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Student Violations Section */
+.student-violations-section h3 {
+  margin: 0 0 16px 0;
+  color: var(--dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.student-violations-timeline {
+  background: var(--grey);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.student-violation-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: var(--light);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.student-violation-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-violation-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.student-violation-icon.warning {
+  background: rgba(255, 152, 0, 0.1);
+  color: #ef6c00;
+}
+
+.student-violation-icon.permitted {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.student-violation-icon.disciplinary {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.student-violation-icon.resolved {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.student-violation-content {
+  flex: 1;
+}
+
+.student-violation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.student-violation-case {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 14px;
+}
+
+.student-violation-date {
+  font-size: 12px;
+  color: var(--dark-grey);
+}
+
+.student-violation-type {
+  font-size: 14px;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.student-violation-location {
+  font-size: 12px;
+  color: var(--dark-grey);
+}
+
+.student-violation-notes {
+  font-size: 13px;
+  color: var(--dark-grey);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Responsive Design for Student Details */
+@media (max-width: 768px) {
+  .student-profile-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .student-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .student-violation-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .student-violation-header {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-profile-card {
+    padding: 16px;
+  }
+
+  .student-profile-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+/* Timeline Highlight */
+.timeline-item.current-viewing .timeline-content {
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.1), transparent);
+  border-left: 3px solid var(--gold);
+  padding-left: 12px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Violation Type Badge Overlay */
+.violation-type-badge-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffc107; /* Default warning color */
+    color: #333;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 10;
+    white-space: nowrap;
+    border: 2px solid #fff;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.violation-type-badge-overlay.permitted {
+    background: #28a745;
+    color: white;
+}
+
+.violation-type-badge-overlay.warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.violation-type-badge-overlay.disciplinary {
+    background: #dc3545;
+    color: white;
+}
+
+/* System Logs Styling - Integrated for Main Admin */
+.SystemLogs-container {
+  padding: 24px;
+  background: var(--light);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.SystemLogs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.SystemLogs-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.SystemLogs-header p {
+  color: var(--dark-grey);
+  font-size: 13px;
+}
+
+.SystemLogs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.SystemLogs-table thead {
+  background: rgba(212, 175, 55, 0.05);
+  border-bottom: 2px solid var(--gold);
+}
+
+.SystemLogs-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--dark);
+  letter-spacing: 0.5px;
+}
+
+.SystemLogs-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--dark);
+}
+
+.SystemLogs-table tr:hover {
+  background: rgba(212, 175, 55, 0.03);
+}
+
+.SystemLogs-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.SystemLogs-badge.login { background: rgba(33, 150, 243, 0.15); color: #0d47a1; }
+.SystemLogs-badge.logout { background: rgba(158, 158, 158, 0.15); color: #424242; }
+.SystemLogs-badge.create { background: rgba(76, 175, 80, 0.15); color: #1b5e20; }
+.SystemLogs-badge.delete, .SystemLogs-badge.archive { background: rgba(244, 67, 54, 0.15); color: #b71c1c; }
+
+.SystemLogs-refresh-btn {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.SystemLogs-refresh-btn:hover {
+  background: #b8962d;
+  transform: translateY(-1px);
+}
+
+.SystemLogs-ip {
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.SystemLogs-pagination button {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.SystemLogs-pagination button.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+
+.SystemLogs-pagination button:hover:not(.active) {
+  background: var(--grey);
+}
+
+
+
+/* ========================================= */
+/*   FORCE SMALL FONTS - USER VIOLATIONS    */
+/* ========================================= */
+
+#Violations-page,
+#Violations-page * {
+  font-size: 11px !important;
+}
+
+#Violations-page h1,
+#Violations-page .Violations-head-title h1 {
+  font-size: 14px !important;
+}
+
+#Violations-page h2,
+#Violations-page .Violations-table-title {
+  font-size: 12px !important;
+}
+
+#Violations-page .Violations-stat-title {
+  font-size: 10px !important;
+}
+
+#Violations-page .Violations-stat-value {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+#Violations-page .Violations-table th {
+  font-size: 9px !important;
+  padding: 10px 14px !important;
+}
+
+#Violations-page .Violations-table td {
+  font-size: 11px !important;
+  padding: 10px 14px !important;
+}
+
+#Violations-page .Violations-status-badge {
+  font-size: 9px !important;
+  padding: 3px 8px !important;
+}
+
+#Violations-page .btn-view-details {
+  font-size: 9px !important;
+  padding: 4px 10px !important;
+}
+
+#Violations-page .Violations-search-box input,
+#Violations-page .Violations-filter-select {
+  font-size: 10px !important;
+  padding: 6px 10px 6px 32px !important;
+}
+
+#Violations-page .Violations-filter-select {
+  padding: 6px 10px !important;
+}
+
+#Violations-page .Violations-footer-info {
+  font-size: 10px !important;
+}
+
+#Violations-page .Violations-breadcrumb,
+#Violations-page .Violations-breadcrumb * {
+  font-size: 9px !important;
+}
+
+#Violations-page .Violations-btn {
+  font-size: 10px !important;
+  padding: 6px 12px !important;
+}
+
+#Violations-page .Violations-stat-card {
+  padding: 12px 14px !important;
+}
+
+#Violations-page .Violations-stat-icon {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 18px !important;
+}
+
+#Violations-page .Violations-table-header {
+  padding: 12px 16px !important;
+}
+
+#Violations-page .Violations-table-footer {
+  padding: 8px 16px !important;
+}
+
+/* ── Mobile pagination fix ─────────────────────────────── */
+@media (max-width: 600px) {
+  .Violations-table-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .Violations-footer-info {
+    text-align: center;
+  }
+
+  .Violations-pagination {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+
+  .Violations-pagination-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+}
+
+/* ========================================= */
+/*       VIEW TOGGLE BUTTONS                */
+/* ========================================= */
+.Violations-view-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--grey);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.Violations-view-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--dark-grey);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.Violations-view-btn:hover {
+  color: var(--dark);
+  background: var(--light);
+}
+
+.Violations-view-btn.active {
+  background: var(--light);
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.2);
+}
+
+.Violations-display-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--dark-grey);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.Violations-display-btn:hover {
+  color: var(--dark);
+  background: var(--light);
+}
+
+.Violations-display-btn.active {
+  background: var(--light);
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.2);
+}
+
+/* ========================================= */
+/*         VIOLATIONS GRID / CARD VIEW      */
+/* ========================================= */
+.Violations-grid-container {
+  padding: 16px;
+}
+
+.Violations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.violation-card {
+  background: var(--light);
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.violation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--gold);
+}
+
+.violation-card-top {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--gold), #ffcc33);
+}
+
+.violation-card-top.warning   { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.violation-card-top.disciplinary { background: linear-gradient(90deg, #ef4444, #f87171); }
+.violation-card-top.permitted { background: linear-gradient(90deg, #10b981, #34d399); }
+.violation-card-top.resolved  { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+
+.violation-card-body {
+  padding: 14px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.violation-card-student {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.violation-card-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.violation-card-student-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.violation-card-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.violation-card-id {
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: var(--gold);
+  font-weight: 600;
+  margin: 2px 0 0;
+}
+
+.violation-card-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+.violation-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.violation-card-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}
+
+.violation-card-meta-label {
+  color: var(--dark-grey);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-size: 9px;
+}
+
+.violation-card-footer {
+  padding: 8px 14px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.violation-card-actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* ========================================= */
+/*         VIOLATIONS LIST VIEW             */
+/* ========================================= */
+/*         VIOLATIONS LIST VIEW             */
+/* ========================================= */
+.Violations-list-container {
+  padding: 12px 16px;
+}
+
+.Violations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.violation-list-item {
+  background: var(--light);
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  padding: 10px 14px 10px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.violation-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  border-radius: 3px 0 0 3px;
+}
+
+.violation-list-item.warning::before      { background: #f59e0b; }
+.violation-list-item.disciplinary::before { background: #ef4444; }
+.violation-list-item.permitted::before    { background: #10b981; }
+.violation-list-item.resolved::before     { background: #3b82f6; }
+
+.violation-list-item:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Top row: avatar + name + actions ── */
+.violation-list-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.violation-list-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.violation-list-name-block {
+  flex: 1;
+  min-width: 0;
+}
+
+.violation-list-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.violation-list-id {
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: var(--gold);
+  font-weight: 600;
+  display: block;
+  margin-top: 1px;
+}
+
+.violation-list-actions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+/* ── Bottom row: badges ── */
+.violation-list-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  padding-left: 46px; /* align under name, past avatar */
+}
+
+/* Legacy selectors kept for compatibility */
+.violation-list-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.violation-list-sub {
+  font-size: 10px;
+  color: var(--dark-grey);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.violation-list-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ========================================= */
+/*    RESPONSIVE ADJUSTMENTS FOR VIEWS      */
+/* ========================================= */
+@media (max-width: 768px) {
+  .Violations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+
+  .violation-card-body {
+    padding: 10px 10px 8px;
+  }
+
+  /* Keep list badges indented on mobile too */
+  .violation-list-badges {
+    padding-left: 46px;
+  }
+
+  /* View toggle: keep it on its own line, full width */
+  .Violations-view-toggle {
+    order: 10;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .Violations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .violation-list-badges {
+    padding-left: 0;
+  }
+}
+
+
+/* ============================================================
+   ADMIN VIOLATION DETAILS MODAL — MODERNIZED
+   Scoped to #ViolationDetailsModal to avoid affecting record modal
+   ============================================================ */
+
+#ViolationDetailsModal.Violations-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  align-items: center;
+  justify-content: center;
+}
+#ViolationDetailsModal.Violations-modal.active {
+  display: flex;
+}
+
+#ViolationDetailsModal .Violations-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+}
+
+#ViolationDetailsModal .Violations-modal-container {
+  position: relative;
+  z-index: 1;
+  background: var(--light, #FAFAF8);
+  border-radius: 20px;
+  width: 92%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+  border: 1px solid rgba(0,0,0,0.08);
+  animation: adminModalIn .35s cubic-bezier(0.34,1.56,0.64,1);
+  margin: 0;
+}
+
+@keyframes adminModalIn {
+  from { opacity: 0; transform: translateY(24px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Header */
+#ViolationDetailsModal .Violations-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, rgba(255,215,0,.15) 0%, transparent 100%);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+
+#ViolationDetailsModal .Violations-modal-header h2 {
+  margin: 0;
+  font-size: 1.15rem !important;
+  font-weight: 700;
+  color: var(--dark, #1A1A1A);
+  display: block;
+  padding-right: 0;
+  flex: none;
+}
+
+#ViolationDetailsModal .Violations-modal-header > div:first-child {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  border-radius: 12px !important;
+}
+
+#ViolationDetailsModal .Violations-modal-header > div:first-child i {
+  font-size: 22px !important;
+  color: #d4af37 !important;
+}
+
+/* Close button */
+#ViolationDetailsModal .Violations-close-btn {
+  position: static;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: var(--grey, #F0F0ED);
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .2s ease;
+  flex-shrink: 0;
+}
+#ViolationDetailsModal .Violations-close-btn:hover {
+  background: #ffe5e5;
+  color: #e53e3e;
+  border-color: #e53e3e;
+  transform: none;
+}
+
+/* Content wrapper */
+#ViolationDetailsModal .violation-details-content {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 13px;
+}
+
+/* Reset forced 12px font inside this modal */
+#ViolationDetailsModal .Violations-modal *,
+#ViolationDetailsModal .Violations-modal span,
+#ViolationDetailsModal .Violations-modal p,
+#ViolationDetailsModal .Violations-modal div {
+  font-size: inherit;
+}
+
+/* Case header */
+#ViolationDetailsModal .case-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  border-bottom: none;
+  background: var(--grey, #F0F0ED);
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+#ViolationDetailsModal .case-id {
+  font-size: .72rem !important;
+  font-weight: 700;
+  color: var(--dark, #1A1A1A) !important;
+}
+
+/* Student info card */
+#ViolationDetailsModal .violation-student-info-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--grey, #F0F0ED) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  margin: 0;
+}
+
+#ViolationDetailsModal .violation-student-info-card .violation-student-image img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold, #FFD700);
+  box-shadow: 0 0 0 3px rgba(255,215,0,.15);
+}
+
+#ViolationDetailsModal .violation-student-details h3 {
+  font-size: .88rem !important;
+  font-weight: 700;
+  color: var(--dark, #1A1A1A);
+  margin-bottom: 6px;
+}
+
+#ViolationDetailsModal .student-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+#ViolationDetailsModal .student-meta span,
+#ViolationDetailsModal .student-id,
+#ViolationDetailsModal .student-section {
+  font-size: .7rem;
+  color: var(--dark-grey, #888);
+}
+
+#ViolationDetailsModal .student-contact {
+  font-size: .7rem;
+  color: var(--dark-grey, #888);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Details grid — modern table */
+#ViolationDetailsModal .violation-details-grid {
+  display: block !important;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: var(--grey, #F0F0ED);
+  margin: 0;
+  cursor: default;
+}
+
+#ViolationDetailsModal .violation-details-grid .vd-table-scroll {
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#ViolationDetailsModal .violation-details-grid .vd-table-scroll::-webkit-scrollbar { display: none; }
+#ViolationDetailsModal .violation-details-grid .vd-table-scroll.dragging { cursor: grabbing; }
+
+#ViolationDetailsModal .vd-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  display: table !important;
+  table-layout: auto !important;
+}
+
+#ViolationDetailsModal .vd-table thead { display: table-header-group !important; }
+#ViolationDetailsModal .vd-table tbody { display: table-row-group !important; }
+#ViolationDetailsModal .vd-table tr   { display: table-row !important; }
+#ViolationDetailsModal .vd-table th,
+#ViolationDetailsModal .vd-table td   { display: table-cell !important; }
+
+#ViolationDetailsModal .vd-table thead tr {
+  background: transparent;
+}
+
+#ViolationDetailsModal .vd-table thead th {
+  padding: 8px 14px;
+  font-size: .6rem !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: var(--dark-grey, #888);
+  text-align: left;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+
+#ViolationDetailsModal .vd-table tbody tr {
+  background: var(--light, #FAFAF8);
+  transition: background .15s;
+}
+
+#ViolationDetailsModal .vd-table tbody tr:hover {
+  background: var(--grey, #F0F0ED);
+}
+
+#ViolationDetailsModal .vd-table tbody td {
+  padding: 10px 14px;
+  font-size: .72rem !important;
+  color: var(--dark, #1A1A1A);
+  font-weight: 400;
+  vertical-align: middle;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+
+/* detail-item hidden inside this modal */
+#ViolationDetailsModal .detail-item { display: none !important; }
+
+/* Notes section */
+#ViolationDetailsModal .violation-notes-section {
+  margin: 0;
+  background: var(--grey, #F0F0ED);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 14px 16px;
+}
+
+#ViolationDetailsModal .violation-notes-section h4,
+#ViolationDetailsModal .violation-evidence-section h4,
+#ViolationDetailsModal .violation-history h4 {
+  font-size: .75rem !important;
+  font-weight: 700;
+  color: var(--dark, #1A1A1A);
+  margin-bottom: 8px;
+}
+
+#ViolationDetailsModal .notes-content {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  font-size: .72rem;
+  color: var(--dark-grey, #555);
+  line-height: 1.6;
+}
+
+/* History */
+#ViolationDetailsModal .violation-history {
+  margin: 0;
+}
+
+#ViolationDetailsModal .timeline {
+  position: relative;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#ViolationDetailsModal .timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0,0,0,0.08);
+}
+
+#ViolationDetailsModal .timeline-item {
+  position: relative;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+
+#ViolationDetailsModal .timeline-marker {
+  position: absolute;
+  left: -20px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold, #FFD700);
+  border: 2px solid var(--light, #fff);
+}
+
+#ViolationDetailsModal .timeline-content {
+  background: var(--grey, #F0F0ED);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border-left: 3px solid var(--gold, #FFD700);
+}
+
+#ViolationDetailsModal .timeline-date {
+  font-size: .65rem;
+  font-weight: 600;
+  color: var(--dark, #1A1A1A);
+  margin-bottom: 2px;
+}
+
+#ViolationDetailsModal .timeline-title {
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--dark, #1A1A1A);
+  margin-bottom: 2px;
+}
+
+#ViolationDetailsModal .timeline-desc {
+  font-size: .65rem;
+  color: var(--dark-grey, #888);
+}
+
+/* Action buttons */
+#ViolationDetailsModal .violation-details-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 0;
+}
+
+#ViolationDetailsModal .violation-details-actions .Violations-action-btn {
+  flex: 1;
+  min-width: 100px;
+  height: 36px;
+  padding: 0 14px;
+  font-size: .78rem;
+  font-weight: 600;
+  border-radius: 8px;
+  gap: 6px;
+}
+
+/* detail-value-container inside admin modal table cells */
+#ViolationDetailsModal .vd-table td .detail-value-container {
+  display: block;
+  font-size: .72rem !important;
+  color: var(--dark, #1A1A1A);
+}
+
+#ViolationDetailsModal .vd-table td .detail-value-container > div {
+  margin-bottom: 4px;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: .72rem !important;
+}
+
+#ViolationDetailsModal .vd-table td .detail-value-container > div * {
+  font-size: .72rem !important;
+}
+
+#ViolationDetailsModal .case-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: .65rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  line-height: 1;
+}
+
+/* ── Record New Violation Modal — narrower width ── */
+#ViolationRecordModal.Violations-modal .Violations-modal-container {
+  max-width: 700px !important;
+  width: 92% !important;
+}
+
+/* ============================================================
+   SLIP REQUESTS TABLE — matches main violations table style
+   ============================================================ */
+#slipRequestsContainer {
+  overflow-x: auto;
+  padding: 0 20px 20px;
+}
+
+#slipRequestsTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  table-layout: auto;
+}
+
+#slipRequestsTable thead {
+  border-bottom: 3px solid var(--border);
+  background: rgba(255,215,0,.03);
+}
+
+#slipRequestsTable th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--dark-grey);
+  white-space: nowrap;
+}
+
+#slipRequestsTable tbody tr {
+  border-bottom: 1.5px solid var(--border);
+  transition: background .2s;
+}
+
+#slipRequestsTable tbody tr:hover {
+  background: rgba(255,215,0,.06);
+}
+
+#slipRequestsTable tbody tr:nth-child(even) {
+  background: rgba(255,215,0,.02);
+}
+
+#slipRequestsTable td {
+  padding: 10px 12px;
+  font-size: 11px;
+  color: var(--dark);
+  vertical-align: middle;
+}
+
+/* Status badges in slip requests */
+.slip-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  border: 1.5px solid transparent;
+}
+
+.slip-status-badge.pending {
+  background: rgba(255,152,0,.15);
+  color: #e65100;
+  border-color: rgba(255,152,0,.3);
+}
+
+.slip-status-badge.approved {
+  background: rgba(76,175,80,.15);
+  color: #1b5e20;
+  border-color: rgba(76,175,80,.3);
+}
+
+.slip-status-badge.denied {
+  background: rgba(244,67,54,.15);
+  color: #b71c1c;
+  border-color: rgba(244,67,54,.3);
+}
+
+/* Action buttons in slip requests */
+.slip-action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--light);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all .2s;
+  color: var(--dark);
+}
+
+.slip-action-btn.approve {
+  background: rgba(76,175,80,.1);
+  color: #1b5e20;
+  border-color: rgba(76,175,80,.3);
+}
+
+.slip-action-btn.approve:hover {
+  background: #4caf50;
+  color: #fff;
+}
+
+.slip-action-btn.deny {
+  background: rgba(244,67,54,.1);
+  color: #b71c1c;
+  border-color: rgba(244,67,54,.3);
+}
+
+.slip-action-btn.deny:hover {
+  background: #f44336;
+  color: #fff;
+}
+
+/* ── Export modals — restore normal font sizes ── */
+#ExportViolationsModal .Violations-modal-container { max-width: 360px !important; }
+#ExportViolationsModal .Violations-modal-container *,
+#ExportViolationsModal .Violations-modal-container p,
+#ExportViolationsModal .Violations-modal-container span,
+#ExportViolationsModal .Violations-modal-container div { font-size: 12px !important; }
+#ExportViolationsModal .Violations-modal-header h2 { font-size: 0.88rem !important; }
+#ExportViolationsModal .Violations-modal-container .export-options button { font-size: 12px !important; font-weight: 500 !important; padding: 8px 12px !important; }
+#ExportViolationsModal .Violations-modal-container .export-options button i { font-size: 16px !important; }
+
+/* ── Entrance button — white square like view button ── */
+.Violations-action-btn.entrance,
+.violation-list-actions .Violations-action-btn.entrance {
+  background: #ffffff !important;
+  color: #6366f1 !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+
+.Violations-action-btn.entrance:hover,
+.violation-list-actions .Violations-action-btn.entrance:hover {
+  background: #f5f5f5 !important;
+  color: #4f46e5 !important;
+  border-color: rgba(99,102,241,0.3) !important;
+  box-shadow: 0 3px 8px rgba(99,102,241,0.15) !important;
+}
+
+.Violations-action-btn.entrance i,
+.violation-list-actions .Violations-action-btn.entrance i {
+  color: inherit !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+}
+
+/* ── Uniform icon size and color for view + entrance ── */
+.violation-list-actions .Violations-action-btn.view i,
+.violation-list-actions .Violations-action-btn.entrance i {
+  font-size: 18px !important;
+  color: #6b7280 !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+}
+
+.violation-list-actions .Violations-action-btn.entrance {
+  background: #ffffff !important;
+  color: #6b7280 !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+.violation-list-actions .Violations-action-btn.entrance:hover i,
+.violation-list-actions .Violations-action-btn.view:hover i {
+  color: #374151 !important;
+}
+
+/* ── Uniform 15px icon size, remove outline artifact ── */
+.violation-list-actions .Violations-action-btn i,
+.Violations-action-buttons .Violations-action-btn i {
+  font-size: 15px !important;
+  color: #6b7280 !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+}
+.violation-list-actions .Violations-action-btn,
+.Violations-action-buttons .Violations-action-btn {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+
+/* ── Dark mode: Student info card fix ── */
+body.dark .violation-student-info-card,
+body.dark .violation-student-info-card.detailed,
+body.dark .violation-student-info-card.selected,
+body.dark #ViolationDetailsModal .violation-student-info-card {
+  background: #222222 !important;
+  border-color: #2A2A2A !important;
+}
+
+body.dark .violation-details-grid,
+body.dark #ViolationDetailsModal .violation-details-grid {
+  background: #222222 !important;
+  border-color: #2A2A2A !important;
+}
+
+body.dark .violation-notes-section,
+body.dark #ViolationDetailsModal .violation-notes-section {
+  background: #222222 !important;
+  border-color: #2A2A2A !important;
+}
+
+body.dark .case-header,
+body.dark #ViolationDetailsModal .case-header {
+  background: #222222 !important;
+  border-color: #2A2A2A !important;
+}
+
+body.dark #ViolationDetailsModal .vd-table tbody tr {
+  background: #1a1a1a !important;
+}
+
+body.dark #ViolationDetailsModal .vd-table tbody tr:hover {
+  background: #222 !important;
+}
+
+body.dark #ViolationDetailsModal .vd-table thead th {
+  background: #111 !important;
+  color: #94a3b8 !important;
+}
+
+body.dark #ViolationDetailsModal .timeline-content {
+  background: #222 !important;
+  border-color: #2A2A2A !important;
+}
+
+
+/* Dark mode for management modal */
+body.dark .vt-manage-body {
+  background: #1a1a1a;
+}
+
+body.dark .vt-manage-column-header,
+body.dark .vt-manage-add-form,
+body.dark .vt-manage-actions {
+  background: #1a1a1a !important;
+}
+
+body.dark .vt-manage-column {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+body.dark #ViolationTypesManageModal .Violations-modal-container {
+  background: #1a1a1a !important;
+}
+
+body.dark #ViolationTypesManageModal .Violations-modal-header {
+  background: #222222 !important;
+  border-bottom-color: #333 !important;
+}
+
+body.dark #ViolationTypesManageModal .Violations-modal-header h2 {
+  color: #fff !important;
+}
+
+body.dark #ViolationTypesManageModal .vt-manage-column-header h3 {
+  color: #e5e7eb !important;
+}
+
+body.dark .vt-manage-item {
+  background: #222222;
+  border-color: #333333;
+}
+
+body.dark .vt-manage-item:hover,
+body.dark .vt-manage-item:focus-within {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+body.dark .vt-manage-item.active {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold);
+}
+
+body.dark .vt-manage-item-name,
+body.dark .vt-level-name-input,
+body.dark .vt-status-name-input {
+  color: #ffffff;
+}
+
+body.dark .vt-level-status-input,
+body.dark .vt-manage-add-form input,
+body.dark .vt-manage-add-form select {
+  background: #2a2a2a !important;
+  border-color: #3f3f3f !important;
+  color: #ffffff !important;
+}
+
+body.dark .vt-level-status-input option {
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+body.dark .vt-manage-empty {
+  color: #6b7280;
+}
+
+body.dark .vt-manage-count {
+  background: #2a2a2a;
+  color: #9ca3af;
+}
+
+body.dark .vt-toggle-view-btn {
+  background: #2a2a2a;
+  border-color: #3f3f3f;
+  color: #9ca3af;
+}
+
+body.dark .vt-color-presets {
+  background: #2a2a2a !important;
+}
+
+body.dark .vt-manage-item-delete,
+body.dark .vt-manage-item-restore {
+  color: #9ca3af;
+}
+
+body.dark .vt-manage-item-delete:hover {
+  color: #ef4444;
+}
+
+/* ============================================================
+   MOBILE: Disable modal animations for instant popup (performance)
+   ============================================================ */
+@media (max-width: 768px) {
+  #ViolationRecordModal,
+  #ViolationDetailsModal,
+  #ViolationModalOverlay,
+  #ExportViolationsModal,
+  .Violations-modal,
+  .Violations-modal-container,
+  .Violations-modal-overlay,
+  .Violations-modal-panel,
+  .Violations-details-panel,
+  #ViolationRecordModal .Violations-modal-container,
+  #ViolationDetailsModal .Violations-modal-container,
+  #ExportViolationsModal .Violations-modal-container,
+  #ViolationTypesManageModal .Violations-modal-container {
+    transition: none !important;
+    animation: none !important;
+    animation-duration: 0s !important;
+  }
+}
+
+/* Violation Types & Levels Management Modal */
+.vt-manage-modal {
+  max-width: 860px;
+  width: 95%;
+}
+
+.vt-manage-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 0 20px 12px;
+  min-height: 320px;
+}
+
+.vt-manage-column {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 10px;
+  background: var(--light, #fafafa);
+  overflow: hidden;
+}
+
+.vt-manage-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  background: #fff;
+}
+
+.vt-manage-column-header h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dark, #1a1a1a);
+}
+
+.vt-manage-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.vt-manage-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 280px;
+  padding: 8px;
+}
+
+.vt-manage-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  padding: 24px 12px;
+  margin: 0;
+}
+
+.vt-manage-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border, #e5e7eb);
+  background: #fff;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vt-manage-item:hover,
+.vt-manage-item:focus-within {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.vt-manage-item.active {
+  border-color: var(--gold, #d4af37);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.vt-level-name-input:focus,
+.vt-status-name-input:focus {
+  outline: none;
+}
+
+.vt-manage-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vt-manage-item-name {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dark, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vt-manage-item-desc {
+  display: block;
+  font-size: 0.72rem;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vt-manage-item-order {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.vt-manage-item-delete {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.vt-manage-item-delete:hover {
+  background: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.vt-manage-add-form {
+  padding: 10px 12px;
+  border-top: 1px solid var(--border, #e5e7eb);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vt-manage-add-form input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.vt-manage-add-form input:focus {
+  outline: none;
+  border-color: var(--gold, #d4af37);
+}
+
+.vt-manage-add-btn {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.vt-manage-actions {
+  padding: 12px 20px 20px;
+}
+
+@media (max-width: 640px) {
+  .vt-manage-body {
+    grid-template-columns: 1fr;
+  }
+}

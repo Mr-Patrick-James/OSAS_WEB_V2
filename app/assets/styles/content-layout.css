@@ -1,0 +1,278 @@
+/* Content Centering and Layout Fixes for Top Navigation */
+
+/* Reset content positioning — scroll is on #main-content only */
+#content {
+  margin-top: 55px;
+  height: calc(100vh - 55px);
+  max-height: calc(100vh - 55px);
+  margin-left: 0 !important;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Ensure main content is properly centered — scroll lives here (body overflow is hidden) */
+#main-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 24px 24px;
+  height: calc(100vh - 56px);
+  max-height: calc(100vh - 56px);
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Force all loaded content to be centered with less spacing */
+#main-content > *,
+#main-content .dashboard-container,
+#main-content .page-container,
+#main-content .content-wrapper {
+  width: 100%;
+  max-width: 1400px; /* Increased from 1200px */
+  margin: 0.5rem auto; /* Reduced margin to match top */
+  padding: 0 0.5rem; /* Reduced from 1rem */
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Loading state styling with reduced padding */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  width: 100%;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.loading-state p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  letter-spacing: 0.2px;
+  margin-top: 16px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--gold);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state styling with reduced margins */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem; /* Reduced from 2rem 1rem */
+  text-align: center;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  margin: 0.5rem auto; /* Reduced from 1rem */
+  max-width: 600px;
+  width: 100%;
+}
+
+.error-state h2 {
+  color: var(--dark);
+  margin-bottom: 0.5rem; /* Reduced from 1rem */
+  font-size: 1.5rem;
+}
+
+.error-state p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem; /* Reduced from 2rem */
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Ensure all dashboard pages are centered with reduced padding */
+.dashboard-container,
+.page-container,
+.content-wrapper {
+  max-width: 1400px; /* Increased from 1200px */
+  margin: 0 auto;
+  padding: 0 0.5rem; /* Reduced from 0 1rem */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Table and form centering with reduced margins */
+.table-container,
+.form-container,
+.card-container {
+  width: 100%;
+  margin: 0.5rem auto; /* Reduced margin to match top */
+  max-width: 1400px; /* Increased from 1200px */
+  padding: 0 0.5rem; /* Reduced from 0 1rem */
+}
+
+/* Modal centering */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+/* Large screen optimizations */
+@media (min-width: 1400px) {
+  #main-content {
+    padding: 0.25rem; /* Even less padding for very large screens */
+    max-width: 1600px; /* Even larger max-width for ultra-wide screens */
+  }
+  
+  #main-content > *,
+  #main-content .dashboard-container,
+  #main-content .page-container,
+  #main-content .content-wrapper {
+    max-width: 1600px;
+    margin: 0.25rem auto; /* Reduced margin for large screens */
+    padding: 0 0.25rem; /* Minimal padding for ultra-wide screens */
+  }
+  
+  .table-container,
+  .form-container,
+  .card-container {
+    max-width: 1600px;
+    margin: 0.25rem auto; /* Reduced margin for large screens */
+    padding: 0 0.25rem; /* Minimal padding for ultra-wide screens */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #main-content {
+    padding: 0.5rem; /* Reduced from 1rem */
+  }
+  
+  .dashboard-container,
+  .page-container,
+  .content-wrapper {
+    padding: 0 0.5rem; /* Reduced from 0 1rem */
+    margin: 0.5rem auto; /* Added margin for consistency */
+  }
+  
+  .table-container,
+  .form-container,
+  .card-container {
+    padding: 0 0.5rem; /* Reduced from 0 1rem */
+    margin: 0.5rem auto; /* Added margin for consistency */
+  }
+}
+
+/* Ensure proper content flow */
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure all loaded content is properly contained and centered */
+#main-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fix any absolute positioning issues */
+#main-content [style*="position: absolute"] {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+}
+
+/* Override any right-align styles */
+#main-content .text-right,
+#main-content [style*="text-align: right"],
+#main-content [style*="float: right"] {
+  text-align: left !important;
+  float: none !important;
+}
+
+/* Ensure tables and grids are centered with reduced margins */
+#main-content table,
+#main-content .table,
+#main-content .grid {
+  margin: 0.5rem auto; /* Reduced from 0.25rem to match top */
+  width: 100%;
+  max-width: 1400px; /* Increased from 1200px */
+}
+
+/* Fix card layouts with reduced margins */
+#main-content .card,
+#main-content .panel,
+#main-content .box {
+  margin: 0.5rem auto; /* Reduced from 0.25rem to match top */
+  width: 100%;
+  max-width: 1400px; /* Increased from 1200px */
+}
+
+/* Compact spacing for large screens */
+@media (min-width: 1200px) {
+  #main-content {
+    padding: 0.25rem; /* Reduced from 0.75rem */
+  }
+  
+  .loading-state {
+    padding: 1rem 0.5rem; /* Reduced for large screens */
+  }
+  
+  .error-state {
+    padding: 1rem 0.5rem; /* Reduced for large screens */
+    margin: 0.25rem auto; /* Reduced margin to match top */
+  }
+  
+  /* Add consistent margins for large screens */
+  #main-content > *,
+  #main-content .dashboard-container,
+  #main-content .page-container,
+  #main-content .content-wrapper {
+    margin: 0.25rem auto; /* Reduced margin for large screens */
+  }
+  
+  .table-container,
+  .form-container,
+  .card-container {
+    margin: 0.25rem auto; /* Reduced margin for large screens */
+  }
+}

@@ -1,0 +1,18 @@
+# Force PHP files to be detected as PHP
+*.php linguist-language=PHP
+
+# Optional: treat HTML, CSS, JS correctly
+*.html linguist-language=HTML
+*.css linguist-language=CSS
+*.js linguist-language=JavaScript
+
+# Optional: ignore folders that skew language stats
+vendor/* linguist-vendored
+node_modules/* linguist-vendored
+assets/* linguist-vendored
+
+# Ignore compiled or cache files
+*.min.js linguist-vendored
+*.log linguist-vendored
+*.cache linguist-vendored
+*.bak linguist-vendored
